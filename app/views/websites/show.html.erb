@@ -1,0 +1,66 @@
+<%= render "shared/header_dark" %>
+<div class="col-md-10 col-md-offset-1">
+  <div class="topmargin margin-bottom fancy-title title-center" style="position: static;">
+    <h1>Shares & Comments For <span><%= @website.link.capitalize %></span>
+      <%= link_to get_articles_path(scrape_job: {url: @website.link}), data: {url: @website.link}, id: "update-button", class:"button button-circle button-small", style: "vertical-align: middle;"  do %>
+        <i class="icon-refresh"></i>  Update
+    <% end %>
+    </h1>
+    <p>Last Updated at <span style="font-weight:bold;"><%= @website.last_crawled.strftime("%B %d, %Y") %></span>
+      <%= link_to website_path(site: @website.link, format: :xls), class:"button button-circle button-mini button-red", style: "vertical-align: middle;"  do %>
+        <i class="icon-download"></i>  Download Excel
+    <% end %>
+    </p>
+  </h1>
+</div>
+<div class="table-responsive">
+  <div id="datatable1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+    <div class="row">
+      <div class="col-sm-12">
+        <table id="datatable1" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%" data-articles='<%= raw @articles.to_json %>'>
+          <thead>
+            <tr role="row">
+              <th>#</th>
+              <th>URL</th>
+              <th>Total Shares</th>
+              <th>Facebook Shares</th>
+              <th>Twitter Shares</th>
+              <th>LinkedIn Shares</th>
+              <th>Pinterest Pins</th>
+              <th>Google +'es</th>
+              <th>Comments</th>
+            </tr>
+          </thead>
+          <tfoot>
+          </tfoot>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<% content_for :js do %>
+  <script>
+    var table = $("#datatable1").DataTable({
+              "iDisplayLength": 50,
+              "aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]]
+            });
+            arr = $("#datatable1").data("articles")
+            for (var i = 0; i < arr.length; i++) {
+              table.row.add([
+                  i + 1,
+                  "<a target='_blank' href='" + arr[i].link + "'>" + arr[i].link + "</a>",
+                  arr[i].total_shares,
+                  arr[i].facebook_shares,
+                  arr[i].twitter_shares,
+                  arr[i].linkedin_shares,
+                  arr[i].pinterest_pins,
+                  arr[i].google_shares,
+                  arr[i].comments
+              ]).draw(true);
+            }
+  </script>
+  <%= javascript_include_tag "update" %>
+<% end %>

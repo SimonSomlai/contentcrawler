@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  link: MyString
+  facebook_shares: 1
+  twitter_shares: 1
+  pinterest_pins: 1
+  total_shares: 1
+  linkedin_shares: 1
+  google_shares: 1
+  comments: 1
+  website_id: 1
+
+two:
+  link: MyString
+  facebook_shares: 1
+  twitter_shares: 1
+  pinterest_pins: 1
+  total_shares: 1
+  linkedin_shares: 1
+  google_shares: 1
+  comments: 1
+  website_id: 1

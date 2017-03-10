@@ -1,0 +1,113 @@
+<div id="wrapper" class="clearfix">
+  <%= render "shared/header" %>
+  <section id="slider" class="slider-parallax dark full-screen" style="background-image: url(<%= asset_path("book") %>); background-size: cover;">
+    <div class="container clearfix">
+      <div class="vertical-middle">
+        <div class="heading-block center nobottomborder">
+          <h1 class="topmargin" data-animate="fadeInUp">Find the most popular articles for ANY website
+          </h1>
+          <a href="/faq#snav-content1" style="vertical-align: middle;" data-animate="fadeInUp" class="button button-3d button-small button-amber"><i class="icon-play" aria-hidden="true"></i> Explainer Video</a>
+        </div>
+        <%= form_for :scrape_job, url: get_home_articles_path, method: "get",  html: {id: "scrape-form-home", class: "landing-wide-form clearfix"} do |f| %>
+          <div class="col_two_third nobottommargin">
+            <%= f.text_field :url, class: "form-control input-lg not-dark", placeholder: "http://mycoolwebsite.com/" %>
+          </div>
+          <div class="col_one_third col_last nobottommargin">
+            <%= f.submit "Search", class: "btn btn-lg btn-danger btn-block nomargin" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<section id="content">
+  <div class="content-wrap">
+    <div class="container clearfix">
+      <div id="section-features" class="heading-block title-center page-section">
+        <h2>Type In A Url To Start Searching</h2>
+        <span class="amount"></span>
+        <%= link_to home_scan_path, class: "scrape-button button button-3d button-rounded button-amber hidden" do %>
+          <i class="icon-search"></i>Scan Articles!
+          <% end %>
+      </div>
+      <div class="table-responsive">
+        <div id="datatable1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+          <div class="row">
+            <div class="col-sm-12">
+              <table id="datatable1" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%">
+                <thead>
+                  <tr role="row">
+                    <th>#</th>
+                    <th>URL</th>
+                    <th>Total Shares</th>
+                    <th>Facebook Shares</th>
+                    <th>Twitter Shares</th>
+                    <th>LinkedIn Shares</th>
+                    <th>Pinterest Pins</th>
+                    <th>Google +'es</th>
+                    <th>Comments</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>#</th>
+                    <th>URL</th>
+                    <th>Total Shares</th>
+                    <th>Facebook Shares</th>
+                    <th>Twitter Shares</th>
+                    <th>LinkedIn Shares</th>
+                    <th>Pinterest Pins</th>
+                    <th>Google +'es</th>
+                    <th>Comments</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="mpf-content modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-body">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="block dark divcenter">
+            <div style="padding: 20px;">
+              <div class="heading-block nobottomborder bottommargin-sm" style="max-width:500px;">
+                <h4>Get all the articles, shares & comments for <span class="url"></span></h4>
+                <span>To get more data for this site, you'll have to create an account!</span>
+              </div>
+              <div class="widget-subscribe-form-result"></div>
+              <%= form_for(@user, url: new_user_registration_path, html: {class: "widget-subscribe-form2", style:"max-width: 350px; margin: 0 auto;"}) do |f| %>
+                <%= devise_error_messages! %>
+                <%= f.email_field :email, autofocus: true, class: "form-control input-lg not-dark required email", style:"margin-bottom:10px;", placeholder:"Enter your Email" %>
+                <%= f.password_field :password, class: "form-control input-lg not-dark required email", style:"margin-bottom:10px;", placeholder:"Enter a password" %>
+                <%= f.password_field :password_confirmation, class: "form-control input-lg not-dark required email", style:"margin-bottom:10px;", placeholder:"Enter your password again" %>
+                <%= hidden_field_tag :url, id: "url-field" %>
+                <%= f.submit "Gimme!", class: "button button-rounded button-border button-dark noleftmargin",  style:"margin-top:15px;" %>
+                <p class="nobottommargin" style="margin-top: 15px;"><small><em>*We hate Spam &amp; Junk Emails too. It's just for identification, no newsletters. email confirmation is required.</em></small></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :js do %>
+  <script>
+    $(document).ready(function() {
+      $('#datatable1').DataTable({
+        "iDisplayLength": 50,
+        "aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]]
+      });
+    });
+  </script>
+  <%= javascript_include_tag "homepage" %>
+<% end %>

@@ -1,0 +1,45 @@
+
+<header id="header" class="transparent-header page-section dark sticky-header">
+  <div id="header-wrap">
+    <div class="container clearfix">
+      <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+      <!-- #logo end -->
+      <nav id="primary-menu">
+        <ul class="one-page-menu sf-js-enabled" style="touch-action: pan-y;">
+          <li class="current">
+            <%= link_to root_path do %>
+              <div><%= user_signed_in? ? "Dashboard" : "Home" %></div>
+            <% end %>
+          </li>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <div>Logout</div>
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to new_user_session_path do %>
+                <div>Login</div>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_registration_path do %>
+                <div>Register</div>
+              <% end %>
+            </li>
+          <% end %>
+          <li>
+            <%= link_to faq_path do %>
+              <div>FAQ</div>
+            <% end %>
+          </li>
+        </ul>
+      </nav><!-- #primary-menu end -->
+    </div>
+  </div>
+</header>
+</div>
+<% content_for :js do %>
+  <%= javascript_include_tag "jquery_ujs" %>
+<% end %>

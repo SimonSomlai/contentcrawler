@@ -1,0 +1,47 @@
+<div id="wrapper" class="clearfix">
+  <%= render "shared/header_dark" %>
+  <section class="topmargin">
+    <div class="container clearfix">
+      <div id="section-specs" class="heading-block title-center page-section">
+        <h2>FAQ</h2>
+        <span>List of frequently asked questions</span>
+      </div>
+      <div id="side-navigation" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+        <div class="col_one_third">
+          <ul class="sidenav ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+            <li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="snav-content1" aria-labelledby="ui-id-1" aria-selected="true" aria-expanded="true"><a href="#snav-content1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1"><i class="icon-magic"></i>How does the application work?<i class="icon-chevron-right"></i></a></li>
+            <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="snav-content2" aria-labelledby="ui-id-2" aria-selected="false" aria-expanded="false"><a href="#snav-content2" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2"><i class="icon-stop"></i>I've hit a rate limit, what do I do?<i class="icon-chevron-right"></i></a></li>
+            <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="snav-content3" aria-labelledby="ui-id-3" aria-selected="false" aria-expanded="false"><a href="#snav-content3" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3"><i class="icon-question"></i>I have a feature request/found a bug, what do I do?<i class="icon-chevron-right"></i></a></li>
+            <li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="snav-content4" aria-labelledby="ui-id-4" aria-selected="false" aria-expanded="false"><a href="#snav-content4" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-4"><i class="icon-frown"></i>Why are there so few pictures of baby ostriches on this website?<i class="icon-chevron-right"></i></a></li>
+          </ul>
+        </div>
+        <div class="col_two_third col_last">
+          <div id="snav-content1" aria-labelledby="ui-id-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-hidden="false" style="display: block;">
+            <h3>Explainer Video</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Z1w5bXbUS5w" frameborder="0" allowfullscreen></iframe>
+  							</div>
+          <div id="snav-content2" aria-labelledby="ui-id-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-hidden="true" style="display: none;">
+            <h3>Rate limits</h3>
+            Facebook and Google have a rate limit of the # of times I can retrieve the shares for a certain website, therefore I can't retrieve all the articles at once. Try again in 1 hour (that's the cooldown time). I've found ways to bypass this, but that would cost money to set up and therefore I haven't fully implemented it yet. Depending on the popularity of the application I might expand it.
+  							</div>
+          <div id="snav-content3" aria-labelledby="ui-id-3" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-hidden="true" style="display: none;">
+            <!-- <img class="alignleft img-responsive" src="http://www.w3schools.com/tags/colormap.gif" alt=""> -->
+            <h3>Feature Requests</h3>
+            Send me an email to info[at]truetech.be or use the feedback form in the lower left corner. If you're having a bug, maybe include a video to show it so it's easier to solve!
+  							</div>
+          <div id="snav-content4" aria-labelledby="ui-id-4" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-hidden="true" style="display: none;">
+            <!-- <img class="alignleft img-responsive" src="http://www.w3schools.com/tags/colormap.gif" alt=""> -->
+            <h3>Baby Ostriches</h3>
+            <%= image_tag "ostrich" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <% content_for :js do %>
+    <script type="text/javascript">
+      $(function() {
+                    $( "#side-navigation" ).tabs({ show: { effect: "fade", duration: 400 } });
+                  });
+    </script>
+  <% end %>

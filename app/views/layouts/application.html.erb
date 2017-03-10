@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= csrf_meta_tags %>
+    <meta name="author" content="Simon Somlai" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContentCrawlr</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <%= stylesheet_link_tag    'application' , media: "all"%>
+    <!--[if lt IE 9]>
+      <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body class="stretched clearfix" style="padding-bottom: 50px;">
+    <div class="wrapper paddingbottom">
+      <div id="messages" class="col-md-4">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-info">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <i class="icon-info"></i><%= message %>
+          </div>
+        <% end %>
+      </div>
+      <div id="spinner" class="col-md-4">
+        <%= image_tag "spinner" %>
+      </div>
+      <%=yield %>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <%= javascript_include_tag "jquery_ujs", 'plugins', "functions", "cable", "script", "table" %>
+
+      <%= yield :js %>
+
+      <div id="feedback-form"  class="col-md-3 hidden" style="background-color: white; border: 1px solid #ccc; border-radius: 8px;">
+        <%= form_for @contact, :format=> 'js',  remote: true, url: contacts_path, html: {id: "login-form"} do |f| %>
+          <i style="cursor: pointer;" class="hide-feedback pull-right icon-chevron-down"></i> <br>
+          <p class="nomargin">Feedback, tips or feature requests? Let us know! </p>
+          <%= render "shared/error_messages", object: @contact %>
+          <%= f.text_area :message, class: "form-control" %>
+          <div class="hidden">
+            <%= f.label :nickname %>
+            <%= f.text_field :nickname, hint: "Leave this blank", :class => "form-control" %>
+          </div>
+          <%= f.submit "Send", class: "button button-submit button-mini button-rounded" %>
+        <% end %>
+      </div>
+    </div>
+
+      <div class="show-feedback hidden">
+        <i style="cursor: pointer;" class="hide-feedback pull-right icon-chevron-up"></i>
+      </div>
+
+      <footer id="footer" class="dark bottom-fixed" style="height: 200px;">
+        <div id="copyrights">
+          <div class="container clearfix">
+            <div class="col_half">
+              Made With <3 By <a target="_blank" style="text-decoration: underline !important;" href="http://truetech.be/en">TrueTech</a><br>
+            </div>
+            <div class="col_half col_last tright">
+              <div class="clear"></div>
+              <i class="icon-envelope2"></i> info[AT]truetech.be
+					</div>
+          </div>
+        </div>
+        <!-- #copyrights end -->
+      </footer>
+      <div id="gotoTop" class="icon-angle-up"></div>
+
+    </body>
+  </html>

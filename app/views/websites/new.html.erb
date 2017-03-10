@@ -1,0 +1,67 @@
+<%= render "shared/header_dark" %>
+<div class="col-md-8 col-md-offset-2">
+  <div class="fancy-title topmargin title-center">
+    <h1>Crawl New Website</h1>
+  </div>
+  <%= form_for :scrape_job, url: get_articles_path, method: "get",  html: {id: "scrape-form", class: "clearfix", style:"z-index: 9999;"} do |f| %>
+    <div class="col_two_third nobottommargi">
+      <%= f.text_field :url, class: "form-control input-lg not-dark", placeholder: "http://mycoolwebsite.com/" %>
+    </div>
+    <div class="col_one_third col_last nobottommargin">
+      <%= f.submit "Search", class: "btn btn-lg btn-danger btn-block nomargin" %>
+    </div>
+  <% end %>
+</div>
+<div class="col-md-10 col-md-offset-1">
+  <div id="section-features" class="heading-block title-center page-section">
+    <h2>Type In A Url To Start Searching</h2>
+    <span class="amount"></span>
+  </div>
+  <div class="table-responsive">
+    <div id="datatable1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+      <div class="row">
+        <div class="col-sm-12">
+          <table id="datatable1" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%">
+            <thead>
+              <tr role="row">
+                <th>#</th>
+                <th>URL</th>
+                <th>Total Shares</th>
+                <th>Facebook Shares</th>
+                <th>Twitter Shares</th>
+                <th>LinkedIn Shares</th>
+                <th>Pinterest Pins</th>
+                <th>Google +'es</th>
+                <th>Comments</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>#</th>
+                <th>URL</th>
+                <th>Total Shares</th>
+                <th>Facebook Shares</th>
+                <th>Twitter Shares</th>
+                <th>LinkedIn Shares</th>
+                <th>Pinterest Pins</th>
+                <th>Google +'es</th>
+                <th>Comments</th>
+              </tr>
+            </tfoot>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :js do %>
+  <%= javascript_include_tag "website_scraper" %>
+  <script>
+    $("#datatable1").DataTable({
+              "iDisplayLength": 50,
+              "aLengthMenu": [[25, 50, 100, -1], [25, 50, 100, "All"]]
+            });
+  </script>
+<% end %>

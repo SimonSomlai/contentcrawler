@@ -1,0 +1,39 @@
+<%= render "shared/header_dark" %>
+<div class="topmargin fancy-title title-center" style="position: static;">
+  <h1>My Saved Websites
+    <%= link_to "+ Add New", new_website_path, class:"button button-circle button-small", style: "vertical-align: middle;"  %></h1>
+</div>
+<div class="col-md-8 col-md-offset-2">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Website</th>
+        <th># Articles</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @websites.each_with_index do |website, i| %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td><%= link_to website.link, website_path(website) %></td>
+          <td><%= website.articles.size %></td>
+          <td><%= website.status? ? "Complete" : "Incomplete" %></td>
+          <td>
+            <%= link_to website_path(website), class: "button button-mini button-circle button-blue" do %>
+            <i class="icon-search"></i>View
+            <% end %> |
+            <%= link_to website_path(website), method: :delete, data: {confirm: "Are you sure you want to remove this website from your list?"}, class: "button button-mini button-circle button-red" do %>
+            <i class="icon-trash"></i>Delete
+            <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+<% content_for :js do %>
+<%= javascript_include_tag "jquery_ujs" %>
+<% end %>

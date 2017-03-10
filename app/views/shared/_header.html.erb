@@ -1,0 +1,39 @@
+<header id="header" class="transparent-header page-section dark">
+  <div id="header-wrap">
+    <div class="container clearfix">
+      <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+      <nav id="primary-menu">
+        <ul class="one-page-menu">
+          <li class="current">
+            <%= link_to root_path, class: "header-link" do %>
+              <div>Home</div>
+            <% end %>
+          </li>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete, class: "header-link" do %>
+                <div>Logout</div>
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to new_user_session_path, class: "header-link" do %>
+                <div>Login</div>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_registration_path, class: "header-link" do %>
+                <div>Register</div>
+              <% end %>
+            </li>
+          <% end %>
+          <li>
+            <%= link_to faq_path, class: "header-link" do %>
+              <div>FAQ</div>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

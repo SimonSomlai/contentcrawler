@@ -1,0 +1,35 @@
+<%= render "shared/header_dark" %>
+<div id="content">
+  <div class="section nobg full-screen nopadding nomargin">
+    <div class="container clearfix">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="panel panel-default divcenter noradius noborder">
+            <div class="panel-body">
+              <h2>Log in</h2>
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: "login-form", class: "nobottommargin"}) do |f| %>
+                <div class="col_full">
+                  <%= f.label :email %>
+                  <%= f.email_field :email, autofocus: true, class: "form-control not-dark" %>
+                </div>
+                <div class="col_full">
+                  <%= f.label :password %>
+                  <%= f.password_field :password, autocomplete: "off", class: "form-control not-dark" %>
+                </div>
+                <% if devise_mapping.rememberable? -%>
+                  <div class="col_full">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                  </div>
+                <% end -%>
+                <div class="actions">
+                  <%= f.submit "Log in", id: "login-form-submit", class: "button button-3d button-black nomargin" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

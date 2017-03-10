@@ -1,0 +1,21 @@
+$("#contact_message").val("")
+var html = "";
+html += "  <div id=\"custom-notification-message-form\" data-notify-close=\"true\" data-notify-position=\"top-left\" data-notify-type=\"success\" data-notify-msg='<i class=\"icon-info-sign\"><\/i> Message successfully send!'><\/div>";
+html += "";
+if ($("#messages #message-box").length == 3) {
+    $("#messages #message-box")[0].remove();
+}
+$("#messages").append(html);
+SEMICOLON.widget.notifications(jQuery("#custom-notification-message-form"));
+$("#feedback-form").fadeOut()
+$('.show-feedback').slideDown().removeClass("hidden")
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+
+setCookie("hidden", "true", 2)

@@ -1,0 +1,45 @@
+source 'https://rubygems.org'
+
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
+gem 'rails', '~> 5.0'
+gem 'pg', '~> 0.19'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '~> 3.1'
+gem 'coffee-rails', '~> 4.2'
+gem 'jquery-rails', "~> 4.2"
+gem 'turbolinks', '~> 5.0'
+gem 'jbuilder', '~> 2.6'
+gem "pry", "~> 0.10"
+gem "puma"
+gem 'watir', "~> 6.1"
+gem 'nokogiri', "~> 1.7"
+gem 'selenium-webdriver', "~> 3.0"
+gem 'social_shares', "~> 0.3"
+gem 'share_counts', "~> 0.1"
+gem 'open_uri_redirections', "~> 0.2"
+gem 'anemone', "~> 0.7"
+gem 'phantomjs', "~> 2.1"
+gem "resque"
+gem 'sinatra', '2.0.0.beta2'
+gem 'rb-fsevent'
+gem "devise"
+gem "mail_form"
+
+
+group :development, :test do
+  gem 'web-console', '~> 3.4'
+  gem 'listen', '~> 3.0'
+  gem 'spring', "~> 2.0"
+  gem 'spring-watcher-listen', '~> 2.0'
+  gem 'htmlbeautifier', "~> 1.2"
+  gem "better_errors", "~> 2.1"
+  gem "meta_request", "~> 0.4"
+  gem "binding_of_caller", "~> 0.7"
+  gem 'byebug', "~> 9.0", platform: :mri
+end
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
