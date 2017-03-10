@@ -198,7 +198,7 @@ class ScrapersController < ApplicationController
       response = Typhoeus::Request.head(link).response_code
       return true if response == 404
       # If it's not a 200 ok code and the page doesn't contain the words "sitemap" or "xml", it's an error (or crawling is better)
-      response != 200 && !@html.text.match(/sitemap/i) && !@html.text.match(/xml/i)
+      !@html.text.match(/sitemap/i) && !@html.text.match(/xml/i) && !([200, 301,302].include? response)
       #  @html.text.match(/404|not found|unable to load Disqus/i)
     end
 
