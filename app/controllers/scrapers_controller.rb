@@ -10,6 +10,7 @@ require 'zlib'
 require 'anemone'
 require 'phantomjs'
 require 'json'
+require 'typhoeus'
 
 class ScrapersController < ApplicationController
   include ActionController::Live
@@ -193,8 +194,12 @@ class ScrapersController < ApplicationController
       @articles.uniq
     end
 
-    def error?
-      @html.text.match(/404|not found|unable to load Disqus/i)
+    def error?(link)
+      response = Typhoeus::Request.head(link).response_code
+      return true if response == 404
+      # If it's not a 200 ok code and the page doesn't contain the words "sitemap" or "xml", it's an error (or crawling is better)
+      response != 200 && !@html.text.match(/sitemap/i) && !@html.text.match(/xml/i)
+      #  @html.text.match(/404|not found|unable to load Disqus/i)
     end
 
     def comments?(text)
@@ -272,7 +277,7 @@ class ScrapersController < ApplicationController
         # end
         puts 'Decent proxy'
         # Proxy.find_by(ip: @proxies[@proxy]).update_attribute("grade", 5)
-        if !error?
+        if !error?("#{@site}#{@urls[size]}")
           write('Sitemap found!')
           puts 'Sitemap found!'
           @links = parse_xml("#{@site}#{@urls[size]}")

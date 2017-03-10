@@ -28,7 +28,7 @@ gem 'sinatra', '2.0.0.beta2'
 gem 'rb-fsevent'
 gem "devise"
 gem "mail_form"
-
+gem "typhoeus"
 
 group :development, :test do
   gem 'web-console', '~> 3.4'
