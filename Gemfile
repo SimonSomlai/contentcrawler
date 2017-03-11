@@ -15,6 +15,7 @@ gem 'turbolinks', '~> 5.0'
 gem 'jbuilder', '~> 2.6'
 gem "pry", "~> 0.10"
 gem "puma"
+
 gem 'watir', "~> 6.1"
 gem 'nokogiri', "~> 1.7"
 gem 'selenium-webdriver', "~> 3.0"
