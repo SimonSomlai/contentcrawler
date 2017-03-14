@@ -158,7 +158,7 @@ class ScrapersController < ApplicationController
     def find_xml_gz_sitemap # Checks for /sitemap.xml.gz
       puts 'No sitemap found on /sitemap or /sitemap.xml, trying sitemap.xml.gz'; write('Searching sitemap.xml.gz', 'message', 1)
       begin
-        Timeout.timeout(5) { link = open("#{@site}sitemap.xml.gz", allow_redirections: :all, read_timeout: 5) }
+        link = Timeout.timeout(5) { open("#{@site}sitemap.xml.gz", allow_redirections: :all, read_timeout: 5) }
         gz = Zlib::GzipReader.new(link)
         xml = gz.read
         @links = Nokogiri::XML.parse(xml).search('*//loc').map(&:inner_html)
