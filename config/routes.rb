@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   get 'home-scan' => 'scrapers#home_scan', as: 'home_scan'
 
   get "get-articles" => 'scrapers#get_articles', as: "get_articles"
+  get "close-stream" => "scrapers#close_stream", as: "close_stream"
 end

@@ -2,7 +2,7 @@
 function submitIndexForm() {
     $('#scrape-form').on('submit', function() {
         console.log("submitted!");
-        $("#spinner").show()
+        $("#spinner, #update-button-new").show()
         // Get values & make the table ready
         var values = $(this).serialize();
         var url = $("#scrape_job_url").val()
@@ -25,6 +25,13 @@ function submitIndexForm() {
             var url = stream.url;
             var amount = stream.amount;
             var shares = stream.shares
+            var error = stream.error
+
+            // Catches URL errors
+            if (error != undefined) {
+                alert('Invalid website format. Use \"http://www.mydomain.com/\". Do not forget the last \/')
+                location.reload()
+            }
 
             // Add alert messages to message box
             if (message != undefined) {

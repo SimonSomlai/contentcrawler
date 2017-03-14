@@ -32,6 +32,13 @@ function submitHomeForm() {
             var message = stream.message;
             var url = stream.url;
             var amount = stream.amount;
+            var error = stream.error;
+
+            // Catches URL errors
+            if (error != undefined) {
+                alert('Invalid website format. Use \"http://www.mydomain.com/\". Do not forget the last \/')
+                location.reload()
+            }
 
             // Add alert messages to message box
             if (message != undefined) {

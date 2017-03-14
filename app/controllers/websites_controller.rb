@@ -1,11 +1,13 @@
 class WebsitesController < ApplicationController
+  before_filter :logged_in_user?
+
   def index
     @websites = current_user.websites
   end
 
   def show
     @website = Website.find(params[:id])
-    @articles = @website.articles.order("crawled DESC").order("total_shares DESC")
+    @articles = @website.articles.limit(500).order("crawled DESC").order("total_shares DESC")
     respond_to do |format|
       format.html
       format.xls do

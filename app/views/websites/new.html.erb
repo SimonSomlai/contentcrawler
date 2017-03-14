@@ -15,6 +15,9 @@
 <div class="col-md-10 col-md-offset-1">
   <div id="section-features" class="heading-block title-center page-section">
     <h2>Type In A Url To Start Searching</h2>
+    <%= link_to close_stream_path, id: "update-button-new",class:"button button-red button-circle button-small", style: "display:none; vertical-align: middle;"  do %>
+      <i class="icon-stop"></i>  Stop
+  <% end %>
     <span class="amount"></span>
   </div>
   <div class="table-responsive">

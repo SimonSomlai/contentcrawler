@@ -5,6 +5,9 @@
       <%= link_to get_articles_path(scrape_job: {url: @website.link}), data: {url: @website.link}, id: "update-button", class:"button button-circle button-small", style: "vertical-align: middle;"  do %>
         <i class="icon-refresh"></i>  Update
     <% end %>
+    <%= link_to close_stream_path, id: "update-button", class:"button button-red button-circle button-small", style: "vertical-align: middle;"  do %>
+      <i class="icon-stop"></i>  Stop
+  <% end %>
     </h1>
     <p>Last Updated at <span style="font-weight:bold;"><%= @website.last_crawled.strftime("%B %d, %Y") %></span>
       <%= link_to website_path(site: @website.link, format: :xls), class:"button button-circle button-mini button-red", style: "vertical-align: middle;"  do %>
