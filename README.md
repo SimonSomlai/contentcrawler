@@ -23,7 +23,7 @@
 <img src="show.png"/>
 
 ## Show Me Da Magic
-<b> app/helpers/scraper_helper.rb</b>
+Most of the cool stuff is inside<b> app/helpers/scraper_helper.rb</b>
 
 <img src="find_articles.png"/>
 <img src="shares.png"/>
