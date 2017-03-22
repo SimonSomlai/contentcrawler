@@ -29,9 +29,9 @@ Most of the cool stuff is inside<b> app/helpers/scraper_helper.rb</b>
 <img src="shares.png"/>
 <img src="private.png"/>
 
-# Explainer Video
+# Explainer Video (click it)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Z1w5bXbUS5w?list=PLGEw-EytTlW5GWyw4Ou6zrPrltMn7CpCJ" frameborder="0" allowfullscreen></iframe>
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Z1w5bXbUS5w/0.jpg)](https://www.youtube.com/watch?list=PLGEw-EytTlW5GWyw4Ou6zrPrltMn7CpCJ&v=Z1w5bXbUS5w)
 
 ## TO DO
 
