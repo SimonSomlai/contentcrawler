@@ -1,24 +1,43 @@
-# README
+# Coach App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+>ContenCrawler is an application that allows its users to retrieve the most popular articles from any website (measured by total social shares and comments). Might be down on occasion since it's running on free dynos.   
 
-Things you may want to cover:
+<b>User demo login:</b> demon@email.com & password  (Yeah, that's 'demon' instead of 'demo'. Typo :/)<br/>
 
-* Ruby version
+# Tech Stack
 
-* System dependencies
+- <b>Front:</b> HTML, CSS, JS (+EventSource)
+- <b>Back:</b> Ruby & RoR
+- <b>Gems:</b> Typhoeus, watir, nokogiri, social_shares, phantomjs, activerecord-import, devise, open_uri, magic
+- <b>Db:</b> Postgresql
 
-* Configuration
+# Pics Or It Didn't Happen
 
-* Database creation
+## Home Page
+<img src="home.png"/>
 
-* Database initialization
+## Website Index
+<img src="index.png"/>
 
-* How to run the test suite
+## Website Show
+<img src="show.png"/>
 
-* Services (job queues, cache servers, search engines, etc.)
+## Show Me Da Magic
+<b> app/helpers/scraper_helper.rb</b>
 
-* Deployment instructions
+<img src="find_articles.png"/>
+<img src="shares.png"/>
+<img src="private.png"/>
 
-* ...
+# Explainer Video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z1w5bXbUS5w?list=PLGEw-EytTlW5GWyw4Ou6zrPrltMn7CpCJ" frameborder="0" allowfullscreen></iframe>
+
+## TO DO
+
+- Refactor messy javascript
+- Implement ip rotation
+- Find solution for facebook <span style="text-decoration:line-through;">rape</span> rate limiting
+- Maybe try to actually market it a bit?  
+
+Made with <3 by [TrueTech]("www.truetech.be/en")

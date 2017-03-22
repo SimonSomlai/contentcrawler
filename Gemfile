@@ -23,7 +23,6 @@ gem 'share_counts', "~> 0.1"
 gem 'open_uri_redirections', "~> 0.2"
 gem 'anemone', "~> 0.7"
 gem 'phantomjs', "~> 2.1"
-gem "resque", "~> 1.27"
 gem 'sinatra', '~> 2.0.0.beta2'
 gem 'rb-fsevent', "~> 0.9"
 gem "devise", "~> 4.2"
