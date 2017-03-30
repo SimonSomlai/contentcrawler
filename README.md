@@ -40,4 +40,4 @@ Most of the cool stuff is inside<b> app/helpers/scraper_helper.rb</b>
 - Find solution for facebook <span style="text-decoration:line-through;">rape</span> rate limiting
 - Maybe try to actually market it a bit?  
 
-Made with <3 by [TrueTech]("http://www.truetech.be/en")
+Made with &lt;3 by <a target="_blank" href="http://www.truetech.be/en"> TrueTech</a>
